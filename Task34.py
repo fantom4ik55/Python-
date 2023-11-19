@@ -1,13 +1,35 @@
-def print_operation_table(operation, num_rows, num_columns):
-    if num_rows < 2 or num_columns < 2:
-        print('ОШИБКА! Размерности таблицы должны быть больше 2!')
-    else:
-        header = ' '.join([str(i) for i in range(1, num_columns + 1)])
-        print(header)
-        for i in range(2, num_rows + 1):
-            row = [str(i)] + [str(operation(i, j)) for j in range(2, num_columns + 1)]
-            print(' '.join(row))
+# Винни-Пух попросил Вас посмотреть, есть ли в его стихах ритм. Поскольку разобраться в его кричалках не настолько просто, насколько легко он их придумывает, Вам стоит написать программу.
 
-print_operation_table(lambda x, y: x * y)
+# Винни-Пух считает, что ритм есть, если число слогов (т.е. число гласных букв) в каждой фразе стихотворения одинаковое.
+# Фраза может состоять из одного слова, если во фразе несколько слов, то они разделяются дефисами.
+# Фразы отделяются друг от друга пробелами.
+
+# Стихотворение  Винни-Пух передаст вам автоматически в переменную stroka в виде строки. В ответе напишите Парам пам-пам, если с ритмом все в порядке и Пам парам, если с ритмом все не в порядке.
+# Если фраза только одна, то ритм определить не получится и необходимо вывести: Количество фраз должно быть больше одной!.
+
+# Пример
+
+import warnings
+
+warnings.filterwarnings('ignore')
+
+def count_vowels(word):
+    vowels = 'аеёиоуыэюя'
+    count = 0
+    for letter in word:
+        if letter.lower() in vowels:
+            count += 1
+    return count
+
+
+phrases = stroka.split()
+if len(phrases) <= 1:
+    print("Количество фраз должно быть больше одной!")
+else:
+    vowel_counts = [count_vowels(phrase) for phrase in phrases]
+    if len(set(vowel_counts)) == 1:
+        print("Парам пам-пам")
+    else:
+        print("Пам парам")
 
 
